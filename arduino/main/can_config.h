@@ -82,7 +82,6 @@ unsigned long filt[12] =
 #define PID_DEMANDED_TORQUE     0x61
 #define PID_ACTUAL_TORQUE       0x62
 #define PID_REF_TORQUE          0x63
-#define PID_ENGINE_TORQUE_DATA  0x64
 
 /*  PIDs conversion, with units
     for doc : https://en.wikipedia.org/wiki/OBD-II_PIDs#Service_01_PID_03
@@ -106,7 +105,7 @@ unsigned long filt[12] =
 #define PID_AIR_FUEL_RATIO_CONVERSION(ratio1, ratio2)       (256 * ratio1 + ratio2) * 2 / 65536 // ratio
 #define PID_REL_THROTTLE_POS_CONVERSION(pos)                (pos * 100) / 256                   // %
 #define PID_TEMP_AIR_AMBIENT_CONVERSION(temp)               (temp - 40)                         // °C
-#define PID_FUEL_TYPE_CONVERSION
+#define PID_FUEL_TYPE_CONVERSION(type)                      (type)                              // See doc : https://en.wikipedia.org/wiki/OBD-II_PIDs#Fuel_Type_Coding
 #define PID_ETHANOL_FUEL_CONVERSION(fuel)                   (fuel * 100) / 256                  // %
 #define PID_REL_ACC_PEDAL_POS_CONVERSION(pos)               (pos * 100) / 256                   // %
 #define PID_OIL_TEMP_CONVERSION(temp)                       (temp - 40)                         // °C
@@ -115,11 +114,10 @@ unsigned long filt[12] =
 #define PID_DEMANDED_TORQUE_CONVERSION(torque)              (torque - 125)                      // %
 #define PID_ACTUAL_TORQUE_CONVERSION(torque)                (torque - 125)                      // %
 #define PID_REF_TORQUE_CONVERSION(torque1, torque2)         (256 * torque1 + torque2)           // Nm
-#define PID_ENGINE_TORQUE_DATA_CONVERSION
 
 /* PIDs tab */
 
-#define MAX_PID 25
+#define MAX_PID 24
 int pids[MAX_PID] = {
     PID_ENGINE_LOAD,
     PID_COOLANT_TEMP,
@@ -147,11 +145,10 @@ int pids[MAX_PID] = {
 
     PID_DEMANDED_TORQUE,
     PID_ACTUAL_TORQUE,
-    PID_REF_TORQUE,
-    PID_ENGINE_TORQUE_DATA
+    PID_REF_TORQUE
 };
 
-#define MAX_PID_SUPPORTED = 4
+#define MAX_PID_SUPPORTED 4
 int pids_supp[MAX_PID_SUPPORTED] = {
     PID_SUPPORTED_1_20,
     PID_SUPPORTED_21_40,

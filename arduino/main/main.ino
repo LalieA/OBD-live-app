@@ -96,7 +96,7 @@ bool init_AT() {
 /* OBD-II */
 
 bool init_CAN() {
-  can.begin(can_tx, can_rx, 38400);      // tx, rx
+  can.begin(CAN_TX, CAN_RX, 38400);      // tx, rx
 
   Serial.println(can.canRate(CAN_RATE_500) ? "set can rate ok" : "set can rate fail");
   Serial.println(can.setMask(mask) ? "set mask ok" : "set mask fail");
@@ -107,13 +107,13 @@ bool init_CAN() {
 // TODO a tester 
 bool init_PIDs() {
     int pids_supp_1_20;
-    getPid(pid_supp[0], pids_supp_1_20);
+    getPid(pids_supp[0], pids_supp_1_20);
     int pids_supp_21_40;
-    getPid(pid_supp[0], pids_supp_21_40);
+    getPid(pids_supp[1], pids_supp_21_40);
     int pids_supp_41_60;
-    getPid(pid_supp[0], pids_supp_41_60);
+    getPid(pids_supp[2], pids_supp_41_60);
     int pids_supp_61_80;
-    getPid(pid_supp[0], pids_supp_61_80);
+    getPid(pids_supp[3], pids_supp_61_80);
 
     for (int pid_id; pid_id < MAX_PID; pid_id++){
         if (pids[pid_id] <= 0x20)
@@ -134,7 +134,7 @@ bool init_PIDs() {
         }
         else
         {
-            Seriel.println("The id proposed in pid supported checking doesn't exist")
+            Serial.println("The id proposed in pid supported checking doesn't exist");
         }
     }
 }
@@ -183,39 +183,39 @@ int convert_from_bytes_to_unite(int const id_pid, int const values1, int const v
     case 0: //PID_ENGINE_LOAD:
         return PID_ENGINE_LOAD_CONVERSION(values1);
     case 1: //PID_COOLANT_TEMP:
-        return PID_COOLANT_TEMP_CONVERSION(values1, values2);
+        return PID_COOLANT_TEMP_CONVERSION(values1);
     case 2: //PID_FUEL_PRESSURE:
         return PID_FUEL_PRESSURE_CONVERSION(values1);
     case 3: //PID_FUEL_ABS_PRESSURE:
         return PID_FUEL_ABS_PRESSURE_CONVERSION(values1, values2);
     case 4: //PID_ENGINE_PRM:
-        return PID_ENGINE_PRM_CONVERSION(values1, value2);
+        return PID_ENGINE_PRM_CONVERSION(values1, values2);
     case 5: //PID_VEHICLE_SPEED:
         return PID_VEHICLE_SPEED_CONVERSION(values1);
     case 6: //PID_TEMP_AIR_INTAKE:
         return PID_TEMP_AIR_INTAKE_CONVERSION(values1);
     case 7: //PID_AIR_FLOW_RATE:
-        return PID_AIR_FLOW_RATE_CONVERSION(values1, value2);
+        return PID_AIR_FLOW_RATE_CONVERSION(values1, values2);
     case 8: //PID_THROTTLE_POS:
         return PID_THROTTLE_POS_CONVERSION(values1);
 
     case 9: //PID_FUEL_REL_PRESSURE:
-        return PID_FUEL_REL_PRESSURE_CONVERSION(values1, value2);
+        return PID_FUEL_REL_PRESSURE_CONVERSION(values1, values2);
     case 10: //PID_FUEL_ABS_PRESSURE:
-        return PID_FUEL_ABS_PRESSURE_CONVERSION(values1, value2);
+        return PID_FUEL_ABS_PRESSURE_CONVERSION(values1, values2);
     case 11: //PID_FUEL_TANK_LVL:
         return PID_FUEL_TANK_LVL_CONVERSION(values1);
 
     case 12: //PID_ABS_ENGINE_LOAD:
-        return PID_ABS_ENGINE_LOAD_CONVERSION(values1, value2);
+        return PID_ABS_ENGINE_LOAD_CONVERSION(values1, values2);
     case 13: //PID_AIR_FUEL_RATIO:
-        return PID_AIR_FUEL_RATIO_CONVERSION(values1, value2);
+        return PID_AIR_FUEL_RATIO_CONVERSION(values1, values2);
     case 14: //PID_REL_THROTTLE_POS:
         return PID_REL_THROTTLE_POS_CONVERSION(values1);
     case 15: //PID_TEMP_AIR_AMBIENT:
         return PID_TEMP_AIR_AMBIENT_CONVERSION(values1);
     case 16: //PID_FUEL_TYPE:
-        return PID_FUEL_TYPE_CONVERSION;
+        return PID_FUEL_TYPE_CONVERSION(values1);
     case 17: //PID_ETHANOL_FUEL:
         return PID_ETHANOL_FUEL_CONVERSION(values1);
     case 18: //PID_REL_ACC_PEDAL_POS:
@@ -231,8 +231,6 @@ int convert_from_bytes_to_unite(int const id_pid, int const values1, int const v
         return PID_ACTUAL_TORQUE_CONVERSION(values1);
     case 23: //PID_REF_TORQUE:
         return PID_REF_TORQUE_CONVERSION(values1, values2);
-    case 24: //PID_ENGINE_TORQUE_DATA:
-        return PID_ENGINE_TORQUE_DATA_CONVERSION;
     default:
         Serial.println("Error : pid requested doesn't exist");
         break;
