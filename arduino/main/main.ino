@@ -10,23 +10,25 @@
   Wiring HC05 <---> Arduino UNO
      VCC <–> +5V
      GND <–> GND
-     TXD <–> Pin 2 (RX)
-     RXD <–> Pin 3 (TX) via a voltage divider bridge from 5V to 3.3V
+     TXD <–> Pin 4 (RX)
+     RXD <–> Pin 5 (TX) via a voltage divider bridge from 5V to 3.3V
+     KEY <-> Pin 6
 */
 
-#define BLUETOOTH_RX 2
-#define BLUETOOTH_TX 3
+#define BLUETOOTH_RX 4
+#define BLUETOOTH_TX 5
+#define BLUETOOTH_KEY 6
 
 /*
   Wiring OBD-II <---> Arduino UNO
      VCC <–> +5V
      GND <–> GND
-     TXD <–> Pin 4 (TX)
-     RXD <–> Pin 5 (RX)
+     TXD <–> Pin 2 (TX)
+     RXD <–> Pin 3 (RX)
 */
 
-#define CAN_RX 4
-#define CAN_TX 5
+#define CAN_RX 2
+#define CAN_TX 3
 
 // VARIABLES
 SoftwareSerial SerialBluetooth(BLUETOOTH_RX, BLUETOOTH_TX);
@@ -50,26 +52,61 @@ bool getPid(unsigned char const pid_id_index, int *value);
 // FONCTIONS
 /* BLUETOOTH */
 
+bool send_bluetooth(const char * msg) {
+  if(SerialBluetooth.available()) {
+    Serial.print("MESSAGE TO SEND: ");
+    Serial.println(msg);
+    SerialBluetooth.write(msg);
+    Serial.println("SENT");
+    return true;
+  }
+  else {
+    // Serial.println("NO BLUETOOTH AVAILABLE");
+    return false;
+  }
+}
+
+const char * recv_bluetooth() {
+  if(SerialBluetooth.available()) {
+    String _recv = SerialBluetooth.readString();
+    _recv.trim();
+    if(_recv.length() != 0) {
+      Serial.print("MESSAGE RECV: ");
+      Serial.println(_recv.c_str());
+    }
+    return _recv.c_str();
+  }
+  // Serial.println("NO BLUETOOTH AVAILABLE");
+  return "";
+}
+
 bool send_AT_cmd(const char * at_cmd) {
   String _recv = "";
   const char * recv;
+  bool ok;
   
   Serial.print(at_cmd);
-  SerialBluetooth.write(at_cmd);
+  // SerialBluetooth.write(at_cmd);
+  ok = send_bluetooth(at_cmd);
   
-  _recv = SerialBluetooth.readString();
-  _recv.trim();
+  // _recv = SerialBluetooth.readString();
+  // _recv.trim();
   
-  recv = _recv.c_str();
-  const int len = _recv.length();
+  // recv = _recv.c_str();
+  recv = recv_bluetooth();
+  // const int len = _recv.length();
+  const int len = strlen(recv);
 
-  if(recv[len - 2] != 'O' || recv[len - 1] != 'K')
+  if(recv[len - 2] != 'O' || recv[len - 1] != 'K' || !ok)
     return false;
   return true;
 }
 
 bool init_AT() {
-  Serial.print("-- AT config init --\n");
+  pinMode(BLUETOOTH_KEY, OUTPUT);
+  digitalWrite(BLUETOOTH_KEY, HIGH);
+
+  Serial.println("-- AT config init --");
   String recv = "";
   uint8_t count_timeout = 0;
   bool isOK = false;
@@ -87,9 +124,9 @@ bool init_AT() {
   }
 
   if(!isOK)
-    Serial.println("Errors occured.");
+    Serial.println("Errors occured setting up bluetooth. Continue");
 
-  Serial.print("-- AT config finished --");
+  Serial.println("-- AT config finished --");
   return isOK;
 }
 
@@ -252,16 +289,9 @@ void setup()
   init_AT();
   init_CAN();
   init_PIDs();
-  //TODO send on bluetooth pids_supp_mask.
 }
 
 void loop()
 {
-  //TODO send the values a cording to the 2 pids tabs (id and supp)
-  if (SerialBluetooth.available()) {
-    Serial.write(SerialBluetooth.read());
-  }
-  if (Serial.available()) {
-    SerialBluetooth.write(Serial.read());
-  }
+
 }
