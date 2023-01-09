@@ -60,4 +60,4 @@ Dans l'état actuel du développement, il vous faut mettre le contact du véhicu
 Les données sont ensuite visualisables sur l'application en temps réel, au fur et à mesure qu'elles sont envoyées par le véicule.
 
 ## Limitations connues
-Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si l'on souhaite l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
+Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si vous souhaitez l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
