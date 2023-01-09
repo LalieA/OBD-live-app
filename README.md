@@ -20,3 +20,5 @@ Ce schéma comprend :
 Après avoir effectué les branchements, il vous faut lancer la carte Arduino après avoir téléversé et de démarrer votre voiture. (Dans l'état actuel, il faut bien attendre le retour `set filt ok` de la carte avant de démarrer la voiture.)
 
 Les valeurs sont ensuite à lire sur le Serial terminal de la carte, les PID étant indenté dans l'ordre du tableau `pids[]` situé dans `can_config.h`.
+
+Si vous voulez obtenir des valeurs via des PIDs spécifique, nous vous invitons à modifié le programme en crééant un nouveau tableau `pids[]` et modifié la fonction `convert_from_bytes_to_unite` ainsi que le programme principal `loop()`.
