@@ -57,7 +57,9 @@ Dans `app/poc_app_new/`, vous pouvez au choix :
 
 - Ouvrir Android Studio et utiliser les outils intégrés pour compiler et lancer l'application
 - Réaliser la commande :
-    ```flutter pub get && flutter build apk```
+    ```
+    flutter pub get && flutter build apk
+    ```
 
 
 #### Visualiser les données récupérées
