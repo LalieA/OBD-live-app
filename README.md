@@ -24,7 +24,7 @@ Voici le schéma des branchements :
 
 ### Téléversement du code source
 
-Depuis l'IDE Arduino, ouvrir le projet disponible dans le dossier `Arduino/main`.
+Le code source a besoin de [cette librairie Arduino](https://github.com/Longan-Labs/Serial_CAN_Arduino) pour être compilé (il s'agit de la librarie créée par le constructeur du module Serial CAN bus). Une fois téléchargée, il vous faudra l'importer dans l'IDE Arduino. Pour cela, il faut ouvrir le projet disponible dans le dossier `Arduino/main` depuis l'IDE Arduino et d'importer la librarie au format ZIP.
 
 Connecter l'Arduino par USB, compiler et téléverser le code source.
 
@@ -35,7 +35,15 @@ Connecter l'Arduino par USB, compiler et téléverser le code source.
 
 
 ## Utilisation du prototype, récupération des données de diagnostic
+Pour allumer le prototype, brancher la carte Arduino via son port USB.
 ### Depuis le moniteur série Arduino
+Si vous voulez visualiser les données depuis le moniteur série de l'IDE Arduino, il vous faut brancher l'Arduino par USB et ouvrir le moniteur. 
+
+Dans l'état actuel du développement, il vous faut mettre le contact du véhicule, attendre de voir apparaître dans la console `set filt ok`, et démarrer le véhicule seulement après.
+
+Les données sont ensuite envoyées sur le moniteur série Arduino; les PIDs permettant d'identifier les données reçues sont indentées dans l'ordre du tableau `pids[]` situé dans `can_config.h`.
+
+Si vous voulez obtenir des valeurs via des PIDs spécifiques, nous vous invitons à modifier le programme en créant un nouveau tableau `pids[]` et en modifiant la fonction `convert_from_bytes_to_unite(.)` ainsi que le programme principal `loop(.)`.
 
 ### Beta : Depuis l'application mobile
 
