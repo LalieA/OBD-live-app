@@ -56,9 +56,8 @@ Pour compiler l'application Android, il est nécessaire d'avoir les framework da
 Dans app/poc_app_new/, vous pouvez au choix :
 
 - Ouvrir Android Studio et utiliser les outils intégrés pour compiler et lancer l'application
-- Réaliser successivement les commandes
-    >flutter pub get
-    >flutter build apk
+- Réaliser la commande
+    >flutter pub get && flutter build apk
 
 
 #### Visualiser les données récupérées
@@ -67,8 +66,7 @@ La connexion Bluetooth entre la carte Arduino et l'application n'est pas encore 
 
 L'application s'utilise donc à postériori et simule le résultat qui aurait été obtenu lors du trajet. Pour cela, elle a besoin d'un fichier .txt ou .csv contenant la trace des données envoyées sur le moniteur série de l'arduino à partir de la première donnée. La trace nous donne ainsi un fichier csv, chaque ligne contenant un pid et la valeur associée, séparés par une virgule.
 
-Lancez l'application, et appuyez sur "Importer des données", puis choisissez le fichier de trace à afficher. La simulation se lance instantannément après. A l'issue d'une simulation, vous obtenez un visuel ressemblant à :
-![](./doc/app.jpg)
+Lancez l'application, et appuyez sur "Importer des données", puis choisissez le fichier de trace à afficher. La simulation se lance instantannément après.
 
 ## Limitations connues
 Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si vous souhaitez l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
