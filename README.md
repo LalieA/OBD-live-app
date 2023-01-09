@@ -48,7 +48,16 @@ Les données sont ensuite envoyées sur le moniteur série Arduino; les PIDs per
 Si vous voulez obtenir des valeurs via des PIDs spécifiques, nous vous invitons à modifier le programme en créant un nouveau tableau `pids[]` et en modifiant la fonction `convert_from_bytes_to_unite(.)` ainsi que le programme principal `loop(.)`.
 
 ### Beta : Depuis l'application mobile
+#### Compiler l'application mobile
 
+#### Visualiser les données récupérées
+
+Si vous voulez visualiser les données depuis l'application que nous avons créé, il vous faudra alimenter l'Arduino par son port USB.
+Connectez-vous depuis votre smartphone à l'appareil bluetooth "MyOBD", puis ouvrez l'application.
+
+Dans l'état actuel du développement, il vous faut mettre le contact du véhicule, attendre une quinzaine de secondes, et démarrer le véhicule seulement après.
+
+Les données sont ensuite visualisables sur l'application en temps réel, au fur et à mesure qu'elles sont envoyées par le véicule.
 
 ## Limitations connues
 Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si l'on souhaite l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
