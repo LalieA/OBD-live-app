@@ -739,7 +739,7 @@
             "outputFile": "com.example.poc_app_new.app-merged_res-11:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/media/datas/Documents/Travail/ENSIMAG/projet-objets-connectes/app/poc_app_new/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/media/datas/Documents/Travail/ENSIMAG/projet-objets-connectes-2/projet-objets-connectes/app/poc_app_new/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -959,7 +959,7 @@
             "outputFile": "com.example.poc_app_new.app-merged_res-11:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/media/datas/Documents/Travail/ENSIMAG/projet-objets-connectes/app/poc_app_new/android/app/src/main/res/values/styles.xml",
+                    "source": "/media/datas/Documents/Travail/ENSIMAG/projet-objets-connectes-2/projet-objets-connectes/app/poc_app_new/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

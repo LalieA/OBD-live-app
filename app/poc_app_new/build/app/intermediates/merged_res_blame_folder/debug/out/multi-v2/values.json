@@ -4,7 +4,7 @@
             "outputFile": "com.example.poc_app_new.app-mergeDebugResources-9:/values/values.xml",
             "map": [
                 {
-                    "source": "/media/datas/Documents/Travail/ENSIMAG/projet-objets-connectes/app/poc_app_new/android/app/src/main/res/values/styles.xml",
+                    "source": "/media/datas/Documents/Travail/ENSIMAG/projet-objets-connectes-2/projet-objets-connectes/app/poc_app_new/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

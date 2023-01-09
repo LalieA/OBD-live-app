@@ -39,7 +39,8 @@ Maintenant que le prototype est prêt à être utilisé, vous pouvez le connecte
 ## Utilisation du prototype, récupération des données de diagnostic
 Pour allumer le prototype, brancher la carte Arduino via son port USB.
 ### Depuis le moniteur série Arduino
-Si vous voulez visualiser les données depuis le moniteur série de l'IDE Arduino, il vous faut brancher l'Arduino par USB et ouvrir le moniteur. 
+Si vous voulez visualiser les données depuis le moniteur série de l'IDE Arduino, il vous faut brancher l'Arduino par USB et ouvrir le moniteur.
+Dans l'état actuel du développement, il vous faut mettre le contact du véhicule, attendre une quinzaine de secondes, et démarrer le véhicule seulement après. 
 
 Dans l'état actuel du développement, il vous faut mettre le contact du véhicule, attendre de voir apparaître dans la console `set filt ok`, et démarrer le véhicule seulement après.
 
@@ -50,14 +51,24 @@ Si vous voulez obtenir des valeurs via des PIDs spécifiques, nous vous invitons
 ### Beta : Depuis l'application mobile
 #### Compiler l'application mobile
 
+Pour compiler l'application Android, il est nécessaire d'avoir les framework dart et flutter installés sur votre machine. Vous aurez également besoin du SDK Android. Un guide est disponible sur [le site de flutter](https://docs.flutter.dev/get-started/install).
+
+Dans app/poc_app_new/, vous pouvez au choix :
+
+- Ouvrir Android Studio et utiliser les outils intégrés pour compiler et lancer l'application
+- Réaliser successivement les commandes
+    >flutter pub get
+    >flutter build apk
+
+
 #### Visualiser les données récupérées
 
-Si vous voulez visualiser les données depuis l'application que nous avons créé, il vous faudra alimenter l'Arduino par son port USB.
-Connectez-vous depuis votre smartphone à l'appareil bluetooth "MyOBD", puis ouvrez l'application.
+La connexion Bluetooth entre la carte Arduino et l'application n'est pas encore implémentée, il n'est donc pas possible de consulter les données en temps réel.
 
-Dans l'état actuel du développement, il vous faut mettre le contact du véhicule, attendre une quinzaine de secondes, et démarrer le véhicule seulement après.
+L'application s'utilise donc à postériori et simule le résultat qui aurait été obtenu lors du trajet. Pour cela, elle a besoin d'un fichier .txt ou .csv contenant la trace des données envoyées sur le moniteur série de l'arduino à partir de la première donnée. La trace nous donne ainsi un fichier csv, chaque ligne contenant un pid et la valeur associée, séparés par une virgule.
 
-Les données sont ensuite visualisables sur l'application en temps réel, au fur et à mesure qu'elles sont envoyées par le véicule.
+Lancez l'application, et appuyez sur "Importer des données", puis choisissez le fichier de trace à afficher. La simulation se lance instantannément après. A l'issue d'une simulation, vous obtenez un visuel ressemblant à :
+![](./doc/app.jpg)
 
 ## Limitations connues
 Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si vous souhaitez l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
