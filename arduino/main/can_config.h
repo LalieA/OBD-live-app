@@ -1,4 +1,3 @@
-
 #define STANDARD_CAN_11BIT      1       // That depands on your car. some 1 some 0. 
 
 /* CAN ID PID */
@@ -135,7 +134,7 @@ int pids[MAX_PID] = {
 
     PID_ABS_ENGINE_LOAD,
     PID_AIR_FUEL_RATIO,
-    PID_REL_THROTTLE_POS ,
+    PID_REL_THROTTLE_POS,
     PID_TEMP_AIR_AMBIENT,
     PID_FUEL_TYPE,
     PID_ETHANOL_FUEL,
@@ -154,4 +153,4 @@ int pids_supp[MAX_PID_SUPPORTED] = {
     PID_SUPPORTED_21_40,
     PID_SUPPORTED_41_60,
     PID_SUPPORTED_61_80
-}
+};
