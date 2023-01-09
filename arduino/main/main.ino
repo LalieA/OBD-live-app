@@ -317,7 +317,7 @@ void setup()
     Serial.println(__DATE__);
     Serial.println("READY");
 
-    init_AT();
+    // init_AT();
     init_CAN();
     init_PIDs();
 }

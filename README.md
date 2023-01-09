@@ -23,15 +23,17 @@ Voici le schéma des branchements :
 - Les broches correspondant aux lignes CAN de l'OBD-II sont les broches 6 (CAN HIGH) et 14 (CAN LOW).
 
 ### Téléversement du code source
-
-Le code source a besoin de [cette librairie Arduino](https://github.com/Longan-Labs/Serial_CAN_Arduino) pour être compilé (il s'agit de la librarie créée par le constructeur du module Serial CAN bus). Une fois téléchargée, il vous faudra l'importer dans l'IDE Arduino. Pour cela, il faut ouvrir le projet disponible dans le dossier `Arduino/main` depuis l'IDE Arduino et d'importer la librarie au format ZIP.
-
-Connecter l'Arduino par USB, compiler et téléverser le code source.
-
 ![](./doc/upload_firmware.png)
 
+Le code source a besoin de [cette librairie Arduino](https://github.com/Longan-Labs/Serial_CAN_Arduino) pour être compilé (il s'agit de la librarie créée par le constructeur du module Serial CAN bus). Une fois téléchargée, il vous faudra l'importer dans l'IDE Arduino. Pour cela, il faut ouvrir le projet disponible dans le dossier `Arduino/main` depuis l'IDE Arduino et d'importer la librarie au format ZIP.
+Connecter l'Arduino par USB, compiler et téléverser le code source.
 
-## Installation sur un véhicule automobile : trouver la prise de diagnostic OBD-II
+####  Cas du premier téléversement : Mode AT du module Bluetooth
+Lors du premier téléversement, il faudra configurer le module bluetooth pour que le prototype apparaisse sous le nom de "MyOBD". Pour cela, il faut décommenter la ligne `init_AT();` dans la fonction `setup(.)`. Une fois que l'Arduino a redémarré, vous pouvez vérifier qu'il existe bien un appareil bluetooth appelé "MyOBD", recommenter la ligne décommentée précédemment et téléverser de nouveau le code source.
+
+
+## Installation sur un véhicule automobile : trouver la prise de diagnostique OBD-II
+Maintenant que le prototype est prêt à être utilisé, vous pouvez le connecter à votre véhicule. Il vous faudra trouver votre prise diagnostique OBD-II, vous pouvez vous aider de [ce site](https://www.outilsobdfacile.fr/emplacement-prise-connecteur-obd.php) pour savoir où elle est. La prise est directement accessible pour certains modèles; pour d'autres, il faudra probablement bouger un cache en plastique.
 
 
 ## Utilisation du prototype, récupération des données de diagnostic
