@@ -2,7 +2,7 @@
 
 Ce dépôt contient toute la documentation permettant de réaliser un prototype reliant un véhicule automobile et une application mobile permettant d’utiliser les données de la voiture en temps réel, dans le but de conseiller l’utilisateur dans sa conduite et l'inviter à adopter une conduite éco-responsable.
 
-Vous trouverez dans ce README toutes les informations relatives à la construction du prototype, son installation, et son utilisation. Une documentation plus détaillée du projet dans son ensemble est également disponible sous forme de wiki.
+Vous trouverez dans ce README toutes les informations relatives à la construction du prototype, son installation, et son utilisation. Une documentation plus détaillée du projet dans son ensemble est également disponible sous forme de [wiki](https://github.com/LalieA/projet-objets-connectes/wiki/Projet-Objet-Connect%C3%A9-:-Adaptateur-OBD-II-pour-l'%C3%A9co-conduite).
 
 ## Construction du prototype
 ### Matériel et branchements
