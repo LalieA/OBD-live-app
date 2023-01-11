@@ -72,3 +72,6 @@ Lancez l'application, et appuyez sur "Importer des données", puis choisissez le
 
 ## Limitations connues
 Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si vous souhaitez l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
+
+## Démonstration
+Une vidéo YouTube du fonctionnement de l'application est disponible : https://youtu.be/ifklnxkWpAQ
