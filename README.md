@@ -68,10 +68,12 @@ La connexion Bluetooth entre la carte Arduino et l'application n'est pas encore 
 
 L'application s'utilise donc à postériori et simule le résultat qui aurait été obtenu lors du trajet. Pour cela, elle a besoin d'un fichier `.txt` ou `.csv` contenant la trace des données envoyées sur le moniteur série de l'arduino à partir de la première donnée. La trace nous donne ainsi un fichier `.csv`, chaque ligne contenant un PID et la valeur associée, séparés par une virgule.
 
-Lancez l'application, et appuyez sur "Importer des données", puis choisissez le fichier de trace à afficher. La simulation se lance instantannément après.
+Lancez l'application, et appuyez sur "Importer des données", puis choisissez le fichier de trace à afficher. La simulation se lance instantanément après.
+Une vidéo de démonstration de l'application est disponible dans la section suivante.
+
+## Démonstration
+Une vidéo YouTube du fonctionnement de l'application est disponible : https://youtu.be/ifklnxkWpAQ
 
 ## Limitations connues
 Ce projet n'étant par nature qu'un prototype, il y a des limitations connues à prendre en compte si vous souhaitez l'utiliser en conditions réelles. Ces limitations connues sont décrites dans le wiki.
 
-## Démonstration
-Une vidéo YouTube du fonctionnement de l'application est disponible : https://youtu.be/ifklnxkWpAQ
